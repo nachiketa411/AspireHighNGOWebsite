@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
-import ListGroup from "../ListGroup"; // Adjust the import path as needed
+import ListGroup from "../ListGroupComponent/ListGroup"; // Adjust the import path as needed
 import Message from "../Message"; // Adjust the import path as needed
+import { Container, ListContainer, MessageContainer } from "./styles";
 
 interface ItemWithMessage {
   id: number;
@@ -32,28 +32,6 @@ const itemList: ItemWithMessage[] = [
     message: "Get an overview of all metrics and activities.",
   },
 ];
-
-const Container = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
-`;
-
-const ListContainer = styled.div`
-  flex: 1;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-`;
-
-const MessageContainer = styled.div`
-  flex: 2;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-`;
 
 const InteractiveList = () => {
   const [items, setItems] = useState<ItemWithMessage[]>([]);
