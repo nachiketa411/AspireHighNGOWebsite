@@ -4,6 +4,12 @@ interface ListItemProps {
   active: boolean;
 }
 
+export interface ListGroupProps {
+  items: string[];
+  heading: string;
+  onSelectItem: (item: string) => void;
+}
+
 export const List = styled.ul`
   list-style: none;
   padding: 0;

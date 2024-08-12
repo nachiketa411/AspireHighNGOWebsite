@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export interface Subheading {
+  title: string;
+  content: string;
+}
+
+export interface ItemWithDetails {
+  id: number;
+  name: string;
+  introduction: string;
+  subheadings: Subheading[];
+}
+
 export const Container = styled.div`
   display: flex;
   align-items: flex-start;

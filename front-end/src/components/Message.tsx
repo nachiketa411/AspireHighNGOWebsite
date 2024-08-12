@@ -1,16 +1,25 @@
-import { ReactNode } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface MessageProps {
-  heading: string;
-  children: ReactNode;
+  content: string;
+  showRegisterButton?: boolean;
 }
 
-const Message = ({ heading, children }: MessageProps) => {
+const Message: React.FC<MessageProps> = ({ content, showRegisterButton }) => {
+  const navigate = useNavigate();
+
+  const handleRegisterClick = () => {
+    navigate("/register"); // Navigate to the registration page
+  };
+
   return (
-    <>
-      <h1>{heading}</h1>
-      <div className="mb-3">{children}</div>
-    </>
+    <div>
+      <p>{content}</p>
+      {showRegisterButton && (
+        <button onClick={handleRegisterClick}>Register</button>
+      )}
+    </div>
   );
 };
 

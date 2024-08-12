@@ -1,16 +1,11 @@
-import Form from "./components/FormComponent/Form";
-import InteractiveList from "./components/parentComponents/InteractiveList"; // Adjust the import path as needed
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./routes";
 
 function App() {
   return (
-    <>
-      <div>
-        <InteractiveList />
-      </div>
-      <div>
-        <Form onSubmit={(data) => console.log(data)} />
-      </div>
-    </>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
 }
 
