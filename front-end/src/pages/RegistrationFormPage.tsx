@@ -17,6 +17,7 @@ const RegistrationFormPage = () => {
         schema={registrationFormSchema}
         fields={registrationFormFields}
         onSubmit={handleRegistrationSubmit}
+        buttonLabel="Register"
       />
     </>
   );

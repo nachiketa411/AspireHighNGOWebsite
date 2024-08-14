@@ -1,12 +1,4 @@
 import { z } from "zod";
-import { Path, FieldValues } from "react-hook-form";
-
-export interface FormField<T extends FieldValues> {
-  name: Path<T>;
-  label: string;
-  type: "text" | "select" | "textarea" | "checkbox" | "radio" | "date";
-  options?: { label: string; value: string }[];
-}
 
 export const registrationFormSchema = z.object({
   firstName: z.string().min(1, "First Name is required").trim(),

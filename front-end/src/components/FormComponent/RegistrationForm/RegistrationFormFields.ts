@@ -1,5 +1,5 @@
+import { FormField } from "../shared/FormField";
 import { RegistrationFormData } from "./RegistrationFormSchema";
-import { FormField } from "./RegistrationFormSchema";
 
 export const registrationFormFields: FormField<RegistrationFormData>[] = [
   { name: "firstName", label: "First Name", type: "text" },

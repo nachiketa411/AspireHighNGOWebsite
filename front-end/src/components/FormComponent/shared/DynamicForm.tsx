@@ -1,7 +1,6 @@
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodSchema } from "zod";
-import { FieldValues } from "react-hook-form";
 import {
   FormContainer,
   Section,
@@ -13,18 +12,20 @@ import {
   RadioGroup,
   Button,
 } from "./styles";
-import { FormField } from "../RegistrationForm/RegistrationFormSchema";
+import { FormField } from "./FormField";
 
 interface DynamicFormProps<T extends FieldValues> {
   schema: ZodSchema<T>;
   fields: FormField<T>[];
   onSubmit: (data: T) => void;
+  buttonLabel: string; // New prop for dynamic button label
 }
 
 const DynamicForm = <T extends FieldValues>({
   schema,
   fields,
   onSubmit,
+  buttonLabel, // Destructure the new prop
 }: DynamicFormProps<T>) => {
   const {
     register,
@@ -37,13 +38,21 @@ const DynamicForm = <T extends FieldValues>({
   const renderField = (field: FormField<T>) => {
     switch (field.type) {
       case "text":
+      case "email":
+      case "password":
+      case "tel":
+      case "url":
+      case "number":
       case "date":
+      case "time":
+      case "datetime-local":
+      case "color":
         return <Input type={field.type} {...register(field.name)} />;
       case "textarea":
         return <TextArea {...register(field.name)} />;
       case "select":
         return (
-          <Select {...register(field.name)}>
+          <Select {...register(field.name)} multiple={field.multiple}>
             {field.options?.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -52,7 +61,6 @@ const DynamicForm = <T extends FieldValues>({
           </Select>
         );
       case "checkbox":
-        // Handle multiple checkboxes as an array of values
         if (field.options && field.options.length > 1) {
           return (
             <div>
@@ -69,7 +77,6 @@ const DynamicForm = <T extends FieldValues>({
             </div>
           );
         } else {
-          // Handle a single checkbox (boolean value)
           return <CheckBox type="checkbox" {...register(field.name)} />;
         }
       case "radio":
@@ -86,6 +93,23 @@ const DynamicForm = <T extends FieldValues>({
               </label>
             ))}
           </RadioGroup>
+        );
+      case "range":
+        return (
+          <Input
+            type="range"
+            {...register(field.name)}
+            min={field.min}
+            max={field.max}
+          />
+        );
+      case "file":
+        return (
+          <Input
+            type="file"
+            {...register(field.name)}
+            multiple={field.multiple}
+          />
         );
       default:
         return null;
@@ -106,7 +130,8 @@ const DynamicForm = <T extends FieldValues>({
             )}
           </Section>
         ))}
-        <Button type="submit">Submit</Button>
+        <Button type="submit">{buttonLabel}</Button>{" "}
+        {/* Use the dynamic label */}
       </form>
     </FormContainer>
   );
