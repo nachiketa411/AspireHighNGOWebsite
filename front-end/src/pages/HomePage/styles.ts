@@ -10,6 +10,8 @@ export interface ItemWithDetails {
   name: string;
   introduction: string;
   subheadings: Subheading[];
+  showButton: boolean;
+  buttonLabel: string;
   routingPath: string;
 }
 

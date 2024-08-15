@@ -23,6 +23,8 @@ const itemList: ItemWithDetails[] = [
       { title: "Step 2", content: "Submit the necessary documents." },
       { title: "Step 3", content: "Complete the enrollment process." },
     ],
+    showButton: true,
+    buttonLabel: "Start Enrollment",
     routingPath: "/register",
   },
   {
@@ -33,6 +35,8 @@ const itemList: ItemWithDetails[] = [
       { title: "Activity Tracking", content: "Track all student activities." },
       { title: "Reporting", content: "Generate activity reports." },
     ],
+    showButton: false,
+    buttonLabel: "",
     routingPath: "",
   },
   // Add more items as needed
@@ -71,7 +75,7 @@ const HomePage: React.FC = () => {
 
   const handleButtonClick = () => {
     if (selectedItem?.name === "Registration & Enrollment") {
-      navigate("/register");
+      navigate(selectedItem.routingPath);
     } else {
       alert(`Action for ${selectedItem?.name}`);
     }
@@ -102,10 +106,11 @@ const HomePage: React.FC = () => {
               title={selectedItem.name}
               introduction={selectedItem.introduction}
               subheadings={selectedItem.subheadings}
-              showActionButton={
-                selectedItem.name === "Registration & Enrollment"
-              }
-              buttonLabel="Start Enrollment"
+              // showActionButton={
+              //   selectedItem.name === "Registration & Enrollment"
+              // }
+              showActionButton={selectedItem.showButton}
+              buttonLabel={selectedItem.buttonLabel}
               buttonAction={handleButtonClick}
             />
           ) : (
