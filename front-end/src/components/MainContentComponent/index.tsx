@@ -1,20 +1,12 @@
 import {
   ActionButton,
   ContentWrapper,
+  MainContentProps,
   SectionTitle,
   SubContent,
   SubSection,
   SubTitle,
 } from "./styles";
-
-interface MainContentProps {
-  title: string;
-  introduction: string;
-  subheadings: { title: string; content: string }[];
-  showActionButton: boolean; // New prop to control button visibility
-  buttonLabel?: string; // New prop for the button label
-  buttonAction?: () => void; // New prop for button action
-}
 
 const MainContent: React.FC<MainContentProps> = ({
   title,
@@ -23,6 +15,7 @@ const MainContent: React.FC<MainContentProps> = ({
   showActionButton,
   buttonLabel = "Default Button Label", // Default button label
   buttonAction,
+  children,
 }) => {
   return (
     <ContentWrapper>
@@ -34,8 +27,9 @@ const MainContent: React.FC<MainContentProps> = ({
           <SubContent>{subheading.content}</SubContent>
         </SubSection>
       ))}
+      {children} {/* Render any children passed to MainContent */}
       {showActionButton && (
-        <ActionButton onClick={buttonAction}>{buttonLabel}</ActionButton> // Display the button if showActionButton is true
+        <ActionButton onClick={buttonAction}>{buttonLabel}</ActionButton>
       )}
     </ContentWrapper>
   );

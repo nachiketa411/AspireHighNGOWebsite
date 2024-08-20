@@ -1,28 +1,23 @@
-import { useState } from "react";
 import { List, ListGroupProps, ListItem } from "./styles";
 
 const ListGroup: React.FC<ListGroupProps> = ({
   items,
   heading,
   onSelectItem,
+  selectedItemId,
 }) => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-
   return (
     <>
       <h1>{heading}</h1>
       {items.length === 0 && <p>No items found</p>}
       <List>
-        {items.map((item, index) => (
+        {items.map((item) => (
           <ListItem
-            key={item}
-            active={index === selectedIndex}
-            onClick={() => {
-              setSelectedIndex(index);
-              onSelectItem(item);
-            }}
+            key={item.id}
+            active={item.id === selectedItemId}
+            onClick={() => onSelectItem(item.id)}
           >
-            {item}
+            {item.name}
           </ListItem>
         ))}
       </List>

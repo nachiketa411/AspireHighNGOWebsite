@@ -4,10 +4,16 @@ interface ListItemProps {
   active: boolean;
 }
 
+interface ListItem {
+  id: number;
+  name: string;
+}
+
 export interface ListGroupProps {
-  items: string[];
+  items: ListItem[];
   heading: string;
-  onSelectItem: (item: string) => void;
+  onSelectItem: (id: number) => void;
+  selectedItemId: number | null;
 }
 
 export const List = styled.ul`

@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export interface MainContentProps {
+  title: string;
+  introduction: string;
+  subheadings: { title: string; content: string }[];
+  showActionButton: boolean; // New prop to control button visibility
+  buttonLabel?: string; // New prop for the button label
+  buttonAction?: () => void; // New prop for button action
+  children?: React.ReactNode; // Accept children as a prop
+}
+
 export const ContentWrapper = styled.div`
   padding: 20px;
   animation: fadeIn 0.5s ease-in-out;
