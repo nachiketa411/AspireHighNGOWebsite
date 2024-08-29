@@ -18,6 +18,7 @@ To Install Packages:
 <!-- For Routing Purposes -->
 6. npm install react-router-dom
 7. npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
+8. npm install polished
 
 Additional Information:
 

@@ -8,7 +8,7 @@ import {
   ItemWithDetails,
   Footer,
   SidebarToggleIcon,
-  CardSection,
+  // CardSection,
   CardContainer,
 } from "./styles"; // Import your styled components
 import ListGroup from "../../components/ListGroupComponent";
@@ -89,7 +89,7 @@ const HomePage: React.FC = () => {
     };
 
     fetchDataForSchoolServices();
-  }, [serviceList]);
+  }, []);
 
   const handleSelectItem = (id: number) => {
     const selected = items.find((item) => item.id === id) || null;
@@ -142,10 +142,21 @@ const HomePage: React.FC = () => {
           hoverColor="#218838"
         />
       </Navbar>
+      <Section
+        mediaType="video"
+        mediaSrc="path/to/video.mp4"
+        title="We are Aspire High"
+        description="A Non-profit dedicated to providing affordable innovative education programs to help low income & first generation students succeed in life"
+        buttons={[
+          { label: "Register", link: "/register", color: "#28a745" },
+          { label: "Sign Up", link: "/signup", color: "#ffc107" },
+          { label: "Login", link: "/login", color: "red" },
+        ]}
+      />
       <SidebarToggleIcon onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} />
       </SidebarToggleIcon>
-      <ContentContainer>
+      {/* <ContentContainer>
         <Sidebar isOpen={isSidebarOpen}>
           <ListGroup
             items={memoizedItems}
@@ -175,33 +186,35 @@ const HomePage: React.FC = () => {
               </MainContent>
             </>
           ) : (
-            <ContentContainer>
-              <Section
-                mediaType="video"
-                mediaSrc="path/to/video.mp4"
-                title="We are Aspire High"
-                description="A Non-profit dedicated to providing affordable innovative education programs to help low income & first generation students succeed in life"
-                buttons={[
-                  { label: "Register", link: "/register", color: "#28a745" },
-                  { label: "Sign Up", link: "/signup", color: "#ffc107" },
-                  { label: "Login", link: "/login", color: "red" },
-                ]}
-              />
-              <CardContainer>
-                {serviceList.map((service) => (
-                  <CardSection>
-                    <Card
-                      imageSrc="https://via.placeholder.com/300x200"
-                      title={service.name}
-                      description={service.description}
-                    />
-                  </CardSection>
-                ))}
-              </CardContainer>
-            </ContentContainer>
+            <CardContainer>
+              {serviceList.map((service) => (
+                <CardSection>
+                  <Card
+                    imageSrc="https://via.placeholder.com/300x200"
+                    title={service.name}
+                    description={service.description}
+                  />
+                </CardSection>
+              ))}
+            </CardContainer>
           )}
         </MainContentWrapper>
+      </ContentContainer> */}
+
+      <ContentContainer>
+        <CardContainer>
+          {serviceList.map((service) => (
+            // <CardSection>
+            <Card
+              imageSrc="https://via.placeholder.com/300x200"
+              title={service.name}
+              description={service.description}
+            />
+            // </CardSection>
+          ))}
+        </CardContainer>
       </ContentContainer>
+
       <Footer>
         <p>© 2024 Your Company. All rights reserved.</p>
       </Footer>

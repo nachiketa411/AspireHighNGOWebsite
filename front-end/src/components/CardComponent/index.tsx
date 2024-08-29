@@ -1,7 +1,7 @@
 import {
-  CardContainer,
+  CardSection,
   CardImage,
-  CardContent,
+  CardContentOverlay,
   CardTitle,
   CardDescription,
   CardProps,
@@ -9,13 +9,13 @@ import {
 
 const Card = ({ imageSrc, title, description }: CardProps) => {
   return (
-    <CardContainer>
+    <CardSection>
       <CardImage src={imageSrc} alt={title} />
-      <CardContent>
+      <CardContentOverlay>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
-      </CardContent>
-    </CardContainer>
+      </CardContentOverlay>
+    </CardSection>
   );
 };
 

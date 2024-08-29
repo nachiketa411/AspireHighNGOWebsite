@@ -25,13 +25,18 @@ const Section: React.FC<SectionProps> = ({
       <Media
         as={mediaType === "video" ? "video" : "img"}
         src={mediaSrc}
-        autoPlay
-        loop
-        muted
+        alt={mediaType === "image" ? title : undefined}
+        loading={mediaType === "image" ? "lazy" : undefined}
+        autoPlay={mediaType === "video"}
+        loop={mediaType === "video"}
+        muted={mediaType === "video"}
       />
 
-      <Overlay style={{ backgroundColor: overlayColor }}>
-        <Content style={{ color: textColor }}>
+      <Overlay
+        style={{ backgroundColor: overlayColor }}
+        overlayColor={overlayColor}
+      >
+        <Content style={{ color: textColor }} textColor={textColor}>
           <Title>{title}</Title>
 
           <DescriptionWrapper>
@@ -44,7 +49,7 @@ const Section: React.FC<SectionProps> = ({
                 <Button
                   key={index}
                   href={button.link}
-                  style={{ backgroundColor: button.color || "#007bff" }}
+                  color={button.color || "#007bff"}
                 >
                   {button.label}
                 </Button>

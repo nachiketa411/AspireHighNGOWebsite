@@ -67,8 +67,10 @@ export const Footer = styled.footer`
 
 export const ContentContainer = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 1;
-  margin-top: 60px; /* Adjust according to the Header height */
+  padding: 20px;
+  // margin-top: 60px; /* Adjust according to the Header height */
   margin-bottom: 40px; /* Adjust according to the Footer height */
   height: calc(100vh - 100px); /* Full height minus header and footer */
   overflow: hidden;
@@ -91,6 +93,12 @@ export const Sidebar = styled.aside<{ isOpen: boolean }>`
   z-index: 10;
   visibility: ${(props) =>
     props.isOpen ? "visible" : "hidden"}; /* Hide when closed */
+  @media (max-width: 768px) {
+    width: ${(props) =>
+      props.isOpen
+        ? "80%"
+        : "0"}; /* Adjust sidebar width for smaller screens */
+  }
 `;
 
 export const MainContentWrapper = styled.main<{ isOpen: boolean }>`
@@ -109,6 +117,10 @@ export const MainContentWrapper = styled.main<{ isOpen: boolean }>`
   flex-direction: row; /* Display children in a row */
   justify-content: space-between; /* Distribute space between cards */
   flex-wrap: wrap; /* Wrap cards to the next line when there is no space */
+  @media (max-width: 768px) {
+    margin-left: 0; /* No margin for smaller screens */
+    width: 100%; /* Full width for smaller screens */
+  }
 `;
 
 export const Section = styled.div`
@@ -160,36 +172,73 @@ export const SidebarToggleIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  transition: background-color 0.3s ease;
   &:hover {
     background-color: #555;
   }
+  &:focus {
+    outline: 2px solid #007bff;
+  }
+  &:active {
+    background-color: #222;
+  }
 `;
 
-// CardContainer to wrap the individual cards with proper alignment and spacing
+// CardWrapper is used to wrap the individual cards with proper alignment and spacing
 export const CardContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: row; /* Ensure single row */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
   padding: 10px;
+  gap: 20px;
   background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-`;
+  scroll-behavior: smooth;
 
-export const CardSection = styled.div`
-  flex: 1 1 300px; // Ensure cards take equal width but can shrink if necessary
-  max-width: 320px; // Maximum width for each card to maintain consistency
-  margin: 10px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; // Ensure content doesn't overflow
-  transition: transform 0.3s ease;
-  padding: 10px;
+  &::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for a cleaner look */
+  }
 
-  &:hover {
-    transform: translateY(-5px);
+  @media (max-width: 768px) {
+    padding: 0; /* Adjust padding for smaller screens */
   }
 `;
+
+// export const CardSection = styled.div`
+//   flex: 0 0 auto; /* Prevent cards from shrinking */
+//   scroll-snap-align: start; /* Align cards to the start of the container */
+//   width: 300px; /* Set a fixed width for each card */
+//   max-width: 300px; /* Maintain a consistent card size */
+//   background-color: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   overflow: hidden; /* Ensure content doesn't overflow */
+//   transition: transform 0.3s ease, box-shadow 0.3s ease;
+//   padding: 0;
+//   margin-bottom: 20px; /* Add a bottom margin for spacing between the cards */
+//   will-change: transform, box-shadow;
+
+//   &:hover {
+//     transform: translateY(-5px);
+//     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+//     transition-delay: 0.1s;
+//   }
+
+//   &:focus-within {
+//     outline: 2px solid #007bff;
+//     outline-offset: 4px;
+//     box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
+//   }
+
+//   &:active {
+//     transform: translateY(-2px); /* New active state */
+//     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* New active state box-shadow */
+//   }
+
+//   @media (max-width: 768px) {
+//     width: 250px; /* Adjust the card width for smaller screens */
+//     max-width: 250px; /* Ensure the card doesn't exceed the screen width */
+//   }
+// `;
