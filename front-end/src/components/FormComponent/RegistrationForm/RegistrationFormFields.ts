@@ -20,7 +20,7 @@ export const registrationFormFields: FormField<RegistrationFormData>[] = [
   createTextField("raceEthnicity", "Race/Ethnicity"),
   createTextField("primaryLanguage", "Primary Language"),
   createTextField("schoolName", "School Name"),
-  createTextField("teacherName", "Teacher’s Name"),
+  createTextField("teacherName", "Teacher's Name"),
   createCheckboxField("educationPrograms", "Current Education Programs", [
     { label: "Gifted and Talented", value: "Gifted and Talented" },
     { label: "Special Education", value: "Special Education" },

@@ -31,6 +31,7 @@ import {
   fetchSchoolProgramServices,
   ProgramService,
 } from "../../services/programService";
+import Section from "../../components/SectionComponent";
 
 const HomePage: React.FC = () => {
   const [items, setItems] = useState<ItemWithDetails[]>([]); // State to hold fetched items
@@ -174,17 +175,30 @@ const HomePage: React.FC = () => {
               </MainContent>
             </>
           ) : (
-            <CardContainer>
-              {serviceList.map((service) => (
-                <CardSection>
-                  <Card
-                    imageSrc="https://via.placeholder.com/300x200"
-                    title={service.name}
-                    description={service.description}
-                  />
-                </CardSection>
-              ))}
-            </CardContainer>
+            <ContentContainer>
+              <Section
+                mediaType="video"
+                mediaSrc="path/to/video.mp4"
+                title="We are Aspire High"
+                description="A Non-profit dedicated to providing affordable innovative education programs to help low income & first generation students succeed in life"
+                buttons={[
+                  { label: "Register", link: "/register", color: "#28a745" },
+                  { label: "Sign Up", link: "/signup", color: "#ffc107" },
+                  { label: "Login", link: "/login", color: "red" },
+                ]}
+              />
+              <CardContainer>
+                {serviceList.map((service) => (
+                  <CardSection>
+                    <Card
+                      imageSrc="https://via.placeholder.com/300x200"
+                      title={service.name}
+                      description={service.description}
+                    />
+                  </CardSection>
+                ))}
+              </CardContainer>
+            </ContentContainer>
           )}
         </MainContentWrapper>
       </ContentContainer>
