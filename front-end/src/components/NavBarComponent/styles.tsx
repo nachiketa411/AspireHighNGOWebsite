@@ -1,18 +1,20 @@
 import { styled } from "styled-components";
 
+interface NavbarBaseProps {
+  label: string;
+}
+
 export interface NavbarProps {
   children: React.ReactNode;
 }
 
-export interface NavbarButtonProps {
-  label: string;
+export interface NavbarButtonProps extends NavbarBaseProps {
   onClick: () => void;
   color?: string;
   hoverColor?: string;
 }
 
-export interface NavbarLinkProps {
-  label: string;
+export interface NavbarLinkProps extends NavbarBaseProps {
   href: string;
 }
 

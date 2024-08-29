@@ -17,6 +17,7 @@ To Install Packages:
 5. npm install react-hook-form zod @hookform/resolvers
 <!-- For Routing Purposes -->
 6. npm install react-router-dom
+7. npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
 
 Additional Information:
 

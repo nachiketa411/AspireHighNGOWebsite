@@ -7,6 +7,9 @@ import {
   ContentContainer,
   ItemWithDetails,
   Footer,
+  SidebarToggleIcon,
+  CardSection,
+  CardContainer,
 } from "./styles"; // Import your styled components
 import ListGroup from "../../components/ListGroupComponent";
 import MainContent from "../../components/MainContentComponent";
@@ -21,6 +24,13 @@ import {
 } from "../../components/componentRegistry";
 import { fetchItems } from "../../services/itemService";
 import { fetchStudents } from "../../services/studentService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Card from "../../components/CardComponent";
+import {
+  fetchSchoolProgramServices,
+  ProgramService,
+} from "../../services/programService";
 
 const HomePage: React.FC = () => {
   const [items, setItems] = useState<ItemWithDetails[]>([]); // State to hold fetched items
@@ -32,6 +42,8 @@ const HomePage: React.FC = () => {
   );
   const [loading, setLoading] = useState<boolean>(true); // State for loading
   const [error, setError] = useState<string | null>(null); // State for error handling
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [serviceList, setServiceList] = useState<ProgramService[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -65,6 +77,19 @@ const HomePage: React.FC = () => {
     fetchDataForSelectedItem();
   }, [selectedItem]);
 
+  useEffect(() => {
+    const fetchDataForSchoolServices = async () => {
+      try {
+        const servicesData = await fetchSchoolProgramServices(); // Fetch student data when required
+        setServiceList(servicesData);
+      } catch (err) {
+        console.error("Failed to fetch services data", err);
+      }
+    };
+
+    fetchDataForSchoolServices();
+  }, [serviceList]);
+
   const handleSelectItem = (id: number) => {
     const selected = items.find((item) => item.id === id) || null;
 
@@ -88,6 +113,10 @@ const HomePage: React.FC = () => {
     console.log("Sign Up clicked");
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   const memoizedItems = useMemo(() => {
     return items.map((item) => ({ id: item.id, name: item.name }));
   }, [items]);
@@ -102,7 +131,7 @@ const HomePage: React.FC = () => {
 
   return (
     <HomePageContainer>
-      <Header>Educational Services for Students</Header>
+      <Header>Aspire High Youth Development</Header>
       <Navbar>
         <NavbarButtonComponent label="Login" onClick={handleLoginClick} />
         <NavbarButtonComponent
@@ -112,8 +141,11 @@ const HomePage: React.FC = () => {
           hoverColor="#218838"
         />
       </Navbar>
+      <SidebarToggleIcon onClick={toggleSidebar}>
+        <FontAwesomeIcon icon={faBars} />
+      </SidebarToggleIcon>
       <ContentContainer>
-        <Sidebar>
+        <Sidebar isOpen={isSidebarOpen}>
           <ListGroup
             items={memoizedItems}
             heading="Select a Service"
@@ -121,26 +153,40 @@ const HomePage: React.FC = () => {
             selectedItemId={selectedItem?.id || null}
           />
         </Sidebar>
-        {selectedItem ? (
-          <MainContentWrapper>
-            <MainContent
-              title={selectedItem.name}
-              introduction={selectedItem.introduction}
-              subheadings={selectedItem.subheadings}
-              showActionButton={selectedItem.showButton}
-              buttonLabel={selectedItem.buttonLabel}
-              buttonAction={() => navigate(selectedItem.routingPath)}
-            >
-              {dynamicComponentRegistry[selectedItem.id]}
-            </MainContent>
-          </MainContentWrapper>
-        ) : (
-          <MainContentWrapper>
-            <p>
-              Please select a service from the list to view more information.
-            </p>
-          </MainContentWrapper>
-        )}
+        <MainContentWrapper isOpen={isSidebarOpen}>
+          {selectedItem ? (
+            <>
+              <MainContent
+                title={selectedItem.name}
+                introduction={selectedItem.introduction}
+                subheadings={selectedItem.subheadings}
+                renderActionButton={() => (
+                  <button
+                    onClick={() => {
+                      navigate(selectedItem.routingPath);
+                    }}
+                  >
+                    {selectedItem.buttonLabel}
+                  </button>
+                )}
+              >
+                {dynamicComponentRegistry[selectedItem.id]}
+              </MainContent>
+            </>
+          ) : (
+            <CardContainer>
+              {serviceList.map((service) => (
+                <CardSection>
+                  <Card
+                    imageSrc="https://via.placeholder.com/300x200"
+                    title={service.name}
+                    description={service.description}
+                  />
+                </CardSection>
+              ))}
+            </CardContainer>
+          )}
+        </MainContentWrapper>
       </ContentContainer>
       <Footer>
         <p>© 2024 Your Company. All rights reserved.</p>

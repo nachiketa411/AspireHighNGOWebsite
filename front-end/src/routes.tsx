@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import RegistrationFormPage from "./pages/RegistrationFormPage";
 import SignUpFormPage from "./pages/SignUpPage";
 import HomePage from "./pages/HomePage";
+// import NewHomePage from "./pages/NewHomePage";
 
 const AppRoutes: React.FC = () => {
   return (

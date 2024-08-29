@@ -1,12 +1,20 @@
 import styled from "styled-components";
 
+// export interface MainContentProps {
+//   title: string;
+//   introduction: string;
+//   subheadings: { title: string; content: string }[];
+//   showActionButton: boolean; // New prop to control button visibility
+//   buttonLabel?: string; // New prop for the button label
+//   buttonAction?: () => void; // New prop for button action
+//   children?: React.ReactNode; // Accept children as a prop
+// }
+
 export interface MainContentProps {
   title: string;
   introduction: string;
   subheadings: { title: string; content: string }[];
-  showActionButton: boolean; // New prop to control button visibility
-  buttonLabel?: string; // New prop for the button label
-  buttonAction?: () => void; // New prop for button action
+  renderActionButton?: () => React.ReactNode;
   children?: React.ReactNode; // Accept children as a prop
 }
 

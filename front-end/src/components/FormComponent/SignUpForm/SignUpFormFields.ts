@@ -1,4 +1,4 @@
-import { FormField } from "../shared/FormField";
+import { FormField } from "../Utilities/FormField";
 import { signUpFormData } from "./SignUpFormSchema";
 
 export const signUpFormFields: FormField<signUpFormData>[] = [

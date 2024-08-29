@@ -1,4 +1,5 @@
 import {
+  DefaultDataProcessor,
   DynamicTableProps,
   Table,
   TableCell,
@@ -7,14 +8,18 @@ import {
   TableRow,
 } from "./styles";
 
-const DynamicTable: React.FC<DynamicTableProps> = ({ data }) => {
+const DynamicTable: React.FC<DynamicTableProps> = ({
+  data,
+  processor = new DefaultDataProcessor(),
+}) => {
   // Check if data is empty
-  if (data.length === 0) {
+  const processedData = processor.process(data);
+
+  if (processedData.length === 0) {
     return <p>No data available</p>;
   }
 
-  // Extract column headers from the data keys
-  const columns = Object.keys(data[0]);
+  const columns = Object.keys(processedData[0]);
 
   return (
     <TableContainer>
@@ -27,7 +32,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row, rowIndex) => (
+          {processedData.map((row, rowIndex) => (
             <TableRow key={rowIndex}>
               {columns.map((column, colIndex) => (
                 <TableCell key={colIndex}>{row[column]}</TableCell>

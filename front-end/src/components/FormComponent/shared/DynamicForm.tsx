@@ -11,8 +11,9 @@ import {
   CheckBox,
   RadioGroup,
   Button,
+  ErrorMessage,
 } from "./styles";
-import { FormField } from "./FormField";
+import { FormField } from "../Utilities/FormField";
 
 interface DynamicFormProps<T extends FieldValues> {
   schema: ZodSchema<T>;
@@ -124,9 +125,9 @@ const DynamicForm = <T extends FieldValues>({
             <Label>{field.label}:</Label>
             {renderField(field)}
             {errors[field.name]?.message && (
-              <p className="text-danger">
+              <ErrorMessage>
                 {errors[field.name]?.message as string}
-              </p>
+              </ErrorMessage>
             )}
           </Section>
         ))}

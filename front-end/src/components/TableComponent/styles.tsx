@@ -1,9 +1,5 @@
 import { styled } from "styled-components";
 
-export interface DynamicTableProps {
-  data: Array<{ [key: string]: any }>; // Array of objects with dynamic keys
-}
-
 export const TableContainer = styled.div`
   width: 100%;
   overflow-x: auto; // Enables horizontal scrolling
@@ -34,3 +30,28 @@ export const TableCell = styled.td`
   border: 1px solid #ddd;
   text-align: left;
 `;
+
+interface DataProcessor {
+  process(data: any[]): any[];
+}
+
+// Default implementation of DataProcessor
+export class DefaultDataProcessor implements DataProcessor {
+  process(data: any[]): any[] {
+    return data; // No processing, just return the data as is
+  }
+}
+
+export class SortByColumn implements DataProcessor {
+  constructor(private column: string) {}
+  process(data: any[]): any[] {
+    return [...data].sort((a, b) =>
+      a[this.column].localeCompare(b[this.column])
+    );
+  }
+}
+
+export interface DynamicTableProps {
+  data: Array<{ [key: string]: any }>; // Array of objects with dynamic keys
+  processor?: DataProcessor; // Optional DataProcessor
+}
