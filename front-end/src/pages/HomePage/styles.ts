@@ -36,24 +36,35 @@ export const HomePageContainer = styled.div`
 
 export const Header = styled.h1`
   width: 100%;
-  height: 60px;
+  height: 60px; // Default height
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
   text-align: center;
-  margin-bottom: 20px;
   padding: 20px;
   background-color: #f4f4f4;
   color: #333;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+
+  @media (max-width: 768px) {
+    height: 50px;
+    padding: 15px;
+    font-size: 1rem; // Smaller font size on smaller screens
+  }
+
+  @media (max-width: 480px) {
+    height: 40px;
+    padding: 10px;
+    font-size: 0.9rem; // Even smaller font size on very small screens
+  }
 `;
 
 export const Footer = styled.footer`
   width: 100%;
-  height: 40px;
+  height: 40px; // Default height
   background-color: #f4f4f4;
   color: #333;
   display: flex;
@@ -63,6 +74,16 @@ export const Footer = styled.footer`
   position: fixed;
   bottom: 0;
   z-index: 1000;
+
+  @media (max-width: 768px) {
+    height: 35px;
+    font-size: 0.9rem; // Smaller font size
+  }
+
+  @media (max-width: 480px) {
+    height: 30px;
+    font-size: 0.8rem; // Even smaller font size
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -74,6 +95,18 @@ export const ContentContainer = styled.div`
   margin-bottom: 40px; /* Adjust according to the Footer height */
   height: calc(100vh - 100px); /* Full height minus header and footer */
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+    margin-top: 5px;
+    margin-bottom: 35px; // Smaller footer on smaller screens
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 5px;
+    margin-top: 2px;
+    margin-bottom: 30px; // Even smaller footer on very small screens
+  }
 `;
 
 export const Sidebar = styled.aside<{ isOpen: boolean }>`
