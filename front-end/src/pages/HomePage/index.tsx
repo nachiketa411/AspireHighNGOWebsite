@@ -153,9 +153,9 @@ const HomePage: React.FC = () => {
           { label: "Login", link: "/login", color: "red" },
         ]}
       />
-      <SidebarToggleIcon onClick={toggleSidebar}>
+      {/* <SidebarToggleIcon onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} />
-      </SidebarToggleIcon>
+      </SidebarToggleIcon> */}
       {/* <ContentContainer>
         <Sidebar isOpen={isSidebarOpen}>
           <ListGroup
@@ -204,13 +204,11 @@ const HomePage: React.FC = () => {
       <ContentContainer>
         <CardContainer>
           {serviceList.map((service) => (
-            // <CardSection>
             <Card
               imageSrc="https://via.placeholder.com/300x200"
               title={service.name}
               description={service.description}
             />
-            // </CardSection>
           ))}
         </CardContainer>
       </ContentContainer>

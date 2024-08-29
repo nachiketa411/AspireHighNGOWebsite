@@ -69,7 +69,7 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 20px;
+  padding: 0 20px;
   // margin-top: 60px; /* Adjust according to the Header height */
   margin-bottom: 40px; /* Adjust according to the Footer height */
   height: calc(100vh - 100px); /* Full height minus header and footer */
