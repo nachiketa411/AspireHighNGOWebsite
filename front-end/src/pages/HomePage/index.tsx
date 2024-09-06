@@ -10,6 +10,7 @@ import {
   SidebarToggleIcon,
   // CardSection,
   CardContainer,
+  Overlay,
 } from "./styles"; // Import your styled components
 import ListGroup from "../../components/ListGroupComponent";
 import MainContent from "../../components/MainContentComponent";
@@ -133,7 +134,16 @@ const HomePage: React.FC = () => {
   return (
     <HomePageContainer>
       <Header>Aspire High Youth Development</Header>
-      <Navbar>
+      <SidebarToggleIcon onClick={toggleSidebar}>
+        <FontAwesomeIcon icon={faBars} />
+      </SidebarToggleIcon>
+      {isSidebarOpen && <Overlay onClick={toggleSidebar} />}
+      <Sidebar isOpen={isSidebarOpen}>
+        <p>Sidebar Content</p>
+        {/* Add your sidebar links or content here */}
+      </Sidebar>
+
+      {/* <Navbar>
         <NavbarButtonComponent label="Login" onClick={handleLoginClick} />
         <NavbarButtonComponent
           label="Sign Up"
@@ -141,7 +151,7 @@ const HomePage: React.FC = () => {
           color="#28a745"
           hoverColor="#218838"
         />
-      </Navbar>
+      </Navbar> */}
       <Section
         mediaType="video"
         mediaSrc="path/to/video.mp4"
@@ -153,9 +163,6 @@ const HomePage: React.FC = () => {
           { label: "Login", link: "/login", color: "red" },
         ]}
       />
-      {/* <SidebarToggleIcon onClick={toggleSidebar}>
-        <FontAwesomeIcon icon={faBars} />
-      </SidebarToggleIcon> */}
       {/* <ContentContainer>
         <Sidebar isOpen={isSidebarOpen}>
           <ListGroup

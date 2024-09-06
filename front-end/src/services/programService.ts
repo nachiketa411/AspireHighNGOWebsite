@@ -8,6 +8,7 @@ export interface ProgramService {
   school: School;
   name: string;
   description: string;
+  routingPath?: string;
 }
 
 const staticProgramList: ProgramService[] = [

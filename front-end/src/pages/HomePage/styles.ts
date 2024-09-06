@@ -110,20 +110,24 @@ export const ContentContainer = styled.div`
 `;
 
 export const Sidebar = styled.aside<{ isOpen: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: ${(props) =>
-    props.isOpen ? "300px" : "0"}; /* Sidebar hidden when closed */
+    props.isOpen ? "250px" : "0"}; /* Sidebar hidden when closed */
+  height: calc(100vh - 100px);
+  background-color: #f4f4f4;
+  color: white;
   padding: ${(props) =>
     props.isOpen ? "20px" : "0"}; /* No padding when closed */
-  background-color: #f4f4f4;
+  transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
+  transform: ${({ isOpen }) =>
+    isOpen ? "translateX(0)" : "translateX(-100%)"};
   box-shadow: ${(props) =>
     props.isOpen ? "2px 0 5px rgba(0, 0, 0, 0.1)" : "none"};
   overflow-y: ${(props) => (props.isOpen ? "auto" : "hidden")};
-  height: calc(100vh - 100px);
-  position: fixed;
-  top: 60px;
   bottom: 40px;
-  transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
-  z-index: 10;
+  z-index: 2001;
   visibility: ${(props) =>
     props.isOpen ? "visible" : "hidden"}; /* Hide when closed */
   @media (max-width: 768px) {
@@ -132,6 +136,43 @@ export const Sidebar = styled.aside<{ isOpen: boolean }>`
         ? "80%"
         : "0"}; /* Adjust sidebar width for smaller screens */
   }
+`;
+
+export const SidebarToggleIcon = styled.div`
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 2002;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #555;
+  }
+  &:focus {
+    outline: 2px solid #007bff;
+  }
+  &:active {
+    background-color: #222;
+  }
+`;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
 `;
 
 export const MainContentWrapper = styled.main<{ isOpen: boolean }>`
@@ -188,33 +229,6 @@ export const MessageContainer = styled.div<{ visible: boolean }>`
       max-height: 500px; /* Adjust based on content size */
       opacity: 1;
     `}
-`;
-
-export const SidebarToggleIcon = styled.div`
-  position: fixed;
-  top: 15px;
-  left: 10px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  z-index: 1001;
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #555;
-  }
-  &:focus {
-    outline: 2px solid #007bff;
-  }
-  &:active {
-    background-color: #222;
-  }
 `;
 
 // CardWrapper is used to wrap the individual cards with proper alignment and spacing
