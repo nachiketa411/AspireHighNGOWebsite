@@ -1,9 +1,6 @@
-import {
-  LiabilityFormData,
-  LiabilityFormSchema,
-} from "../components/FormComponent/LiabilityForm/LiabilityFormSchema";
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { LiabiltyFormFields } from "../components/FormComponent/LiabilityForm/LiabiltyFormFields";
+import { LiabilityFormData,LiabilityFormSchema } from "../../components/FormComponent/LiabilityForm/LiabilityFormSchema";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
+import { LiabiltyFormFields } from "../../components/FormComponent/LiabilityForm/LiabiltyFormFields";
 
 const LiabilityFormPage = () => {
   const handleLiabilitySubmit = (data: LiabilityFormData) => {

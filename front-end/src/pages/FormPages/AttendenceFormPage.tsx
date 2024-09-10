@@ -1,10 +1,7 @@
-import { AttendenceFormFields } from "../components/FormComponent/AttendanceForm/AttendenceFormFields";
-import {
-  AttendenceFormData,
-  AttendenceFormSchema,
-} from "../components/FormComponent/AttendanceForm/AttendenceFormSchema";
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { FetchStudentsAndPrograms } from "../services/FetchStudentsAndPrograms";
+import { AttendenceFormData,AttendenceFormSchema } from "../../components/FormComponent/AttendanceForm/AttendenceFormSchema";
+import { AttendenceFormFields } from "../../components/FormComponent/AttendanceForm/AttendenceFormFields";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
+import { FetchStudentsAndPrograms } from "../../services/FetchStudentsAndPrograms";
 
 const AttendanceFormPage = () => {
   const { students, programs, loading, error } = FetchStudentsAndPrograms();

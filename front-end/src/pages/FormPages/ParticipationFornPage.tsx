@@ -1,10 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import {
-  ParticipationFormData,
-  ParticipationFormSchema,
-} from "../components/FormComponent/ParticipationForm/ParticipationFormSchema";
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { participationFormFields } from "../components/FormComponent/ParticipationForm/ParticipationFormFields";
+import { ParticipationFormData,ParticipationFormSchema } from "../../components/FormComponent/ParticipationForm/ParticipationFormSchema";
+import { participationFormFields } from "../../components/FormComponent/ParticipationForm/ParticipationFormFields";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
 
 const ParticipationFormPage = () => {
   const linkTo = useNavigate();

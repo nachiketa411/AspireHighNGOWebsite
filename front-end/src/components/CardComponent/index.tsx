@@ -8,7 +8,6 @@ import {
   CardProps,
 } from "./styles";
 
-import { useNavigate } from 'react-router-dom';
 
 const Card = ({ imageSrc, title, description,formPaths }: CardProps) => {
   const navigate = useNavigate();

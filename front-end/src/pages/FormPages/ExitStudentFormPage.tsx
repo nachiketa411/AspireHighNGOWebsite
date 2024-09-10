@@ -1,7 +1,7 @@
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { ExitStudentFormData,ExitStudentFormSchema } from "../components/FormComponent/ExitStudentForm/ExitStudentFormSchema";
-import { ExitStudentFormFields } from "../components/FormComponent/ExitStudentForm/ExitStudentFormFields";
-import { FetchStudentsAndPrograms } from "../services/FetchStudentsAndPrograms";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
+import { ExitStudentFormData,ExitStudentFormSchema } from "../../components/FormComponent/ExitStudentForm/ExitStudentFormSchema";
+import { ExitStudentFormFields } from "../../components/FormComponent/ExitStudentForm/ExitStudentFormFields";
+import { FetchStudentsAndPrograms } from "../../services/FetchStudentsAndPrograms";
 
 const ExitStudentFormPage = () => {
   const { students, loading, error } = FetchStudentsAndPrograms();

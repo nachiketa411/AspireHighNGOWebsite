@@ -1,9 +1,6 @@
-import {
-  RegistrationFormData,
-  registrationFormSchema,
-} from "../components/FormComponent/RegistrationForm/RegistrationFormSchema";
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { registrationFormFields } from "../components/FormComponent/RegistrationForm/RegistrationFormFields";
+import { RegistrationFormData,registrationFormSchema } from "../../components/FormComponent/RegistrationForm/RegistrationFormSchema";
+import { registrationFormFields } from "../../components/FormComponent/RegistrationForm/RegistrationFormFields";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
 
 const RegistrationFormPage = () => {
   const handleRegistrationSubmit = (data: RegistrationFormData) => {

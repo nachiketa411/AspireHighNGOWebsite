@@ -9,9 +9,8 @@ export enum ComponentKeys {
 
 // Lazy load your components
 const DynamicTable = lazy(() => import("../components/TableComponent"));
-const RegistrationFormPage = lazy(
-  () => import("../pages/RegistrationFormPage")
-);
+import RegistrationFormPage from '../pages/FormPages/RegistrationFormPage';
+
 
 const componentMapping: {
   [key in ComponentKeys]: React.LazyExoticComponent<React.FC<any>>;

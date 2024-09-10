@@ -1,6 +1,6 @@
-import { SeniorFormData,SeniorSurveySchema } from "../components/FormComponent/SeniorExitSurvey/SeniorSurveySchema";
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { SeniorSurveyFormFields } from "../components/FormComponent/SeniorExitSurvey/SeniorSurveyFormfields";
+import { SeniorFormData,SeniorSurveySchema } from "../../components/FormComponent/SeniorExitSurvey/SeniorSurveySchema";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
+import { SeniorSurveyFormFields } from "../../components/FormComponent/SeniorExitSurvey/SeniorSurveyFormfields";
 const SeniorSurveyPage = () => {
 const handleSubmit = (data: SeniorFormData) => {
     console.log("data submitted:", data);

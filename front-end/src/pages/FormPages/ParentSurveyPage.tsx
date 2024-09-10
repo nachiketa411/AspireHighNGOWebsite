@@ -1,7 +1,7 @@
-import { ParentSurveyFormData,ParentSurveySchema } from "../components/FormComponent/ParentSurvey/ParentSurveySchema";
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
+import { ParentSurveyFormData,ParentSurveySchema } from "../../components/FormComponent/ParentSurvey/ParentSurveySchema";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
 
-import { ParentSurveyFormFields } from "../components/FormComponent/ParentSurvey/ParentSurveyFormFields";
+import { ParentSurveyFormFields } from "../../components/FormComponent/ParentSurvey/ParentSurveyFormFields";
   
 const ParentSurveyPage = () => {
 const handleSubmit = (data: ParentSurveyFormData) => {

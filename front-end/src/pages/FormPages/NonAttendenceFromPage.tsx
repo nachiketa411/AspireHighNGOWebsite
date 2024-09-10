@@ -1,10 +1,7 @@
-import { NonAttendenceFormFields } from "../components/FormComponent/NonAttendanceForm/NonAttendenceFormFields";
-import {
-  NonAttendenceFormData,
-  NonAttendenceFormSchema,
-} from "../components/FormComponent/NonAttendanceForm/NonAttendenceFormSchema";
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { FetchStudentsAndPrograms } from "../services/FetchStudentsAndPrograms";
+import { NonAttendenceFormData,NonAttendenceFormSchema } from "../../components/FormComponent/NonAttendanceForm/NonAttendenceFormSchema";
+import { NonAttendenceFormFields } from "../../components/FormComponent/NonAttendanceForm/NonAttendenceFormFields";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
+import { FetchStudentsAndPrograms } from "../../services/FetchStudentsAndPrograms";
 
 const NonAttendanceFormPage = () => {
   const { students, loading, error } = FetchStudentsAndPrograms();

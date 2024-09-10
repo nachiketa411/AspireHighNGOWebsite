@@ -1,8 +1,8 @@
-import { QuarterlyReportFormFields } from "../components/FormComponent/QuarterlyReport/QuarterlyReportFormFields";
-import { QuarterlyReportFormData,QuarterlyReportFormSchema  } from "../components/FormComponent/QuarterlyReport/QuarterlyReportSchema";
+import { QuarterlyReportFormFields } from "../../components/FormComponent/QuarterlyReport/QuarterlyReportFormFields";
+import { QuarterlyReportFormData,QuarterlyReportFormSchema  } from "../../components/FormComponent/QuarterlyReport/QuarterlyReportSchema";
 
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { FetchStudentsAndPrograms } from "../services/FetchStudentsAndPrograms";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
+import { FetchStudentsAndPrograms } from "../../services/FetchStudentsAndPrograms";
 
 const QuarterlyReportPage = () => {
   const { students, loading, error } = FetchStudentsAndPrograms();
