@@ -215,6 +215,7 @@ const HomePage: React.FC = () => {
               imageSrc="https://via.placeholder.com/300x200"
               title={service.name}
               description={service.description}
+              formPaths={service.routingPath} 
             />
           ))}
         </CardContainer>

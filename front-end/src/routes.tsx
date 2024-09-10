@@ -8,6 +8,10 @@ import LiabilityFormPage from "./pages/LiabilityFormPage";
 import AttendanceFormPage from "./pages/AttendenceFormPage";
 import ExitStudentFormPage from "./pages/ExitStudentFormPage";
 import NonAttendanceFormPage from "./pages/NonAttendenceFromPage";
+import QuarterlyReportPage from "./pages/QuarterlyReportFormPage";
+import StudentSurveyPage from "./pages/StudentSurveyPage";
+import ParentSurveyPage from "./pages/ParentSurveyPage";
+import SeniorSurveyPage from "./pages/SeniorSurveyPage";
 
 const AppRoutes: React.FC = () => {
   return (
@@ -21,6 +25,10 @@ const AppRoutes: React.FC = () => {
       <Route path="/attendence" element={<AttendanceFormPage />} />
       <Route path="/exitstudent" element={<ExitStudentFormPage />} />
       <Route path="/n" element={<NonAttendanceFormPage />} />
+      <Route path="/quarterly-report" element={<QuarterlyReportPage/>} />
+      <Route path="/studentsurvey" element={<StudentSurveyPage/>} />
+      <Route path="/parentsurvey" element={<ParentSurveyPage/>} />
+      <Route path="/seniorsurvey" element={<SeniorSurveyPage/>} />
     </Routes>
   );
 };

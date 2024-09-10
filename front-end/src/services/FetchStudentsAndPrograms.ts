@@ -13,6 +13,7 @@ export const FetchStudentsAndPrograms = () => {
         const [studentsResponse, programsResponse] = await Promise.all([
           fetch("https://freetestapi.com/api/v1/students?limit=5"),
           fetch("https://freetestapi.com/api/v1/students?limit=5"),
+          //change to our own api from backend
         ]);
 
         const studentsData = await studentsResponse.json();

@@ -7,9 +7,16 @@ import {
   CardProps,
 } from "./styles";
 
-const Card = ({ imageSrc, title, description }: CardProps) => {
+import { useNavigate } from 'react-router-dom';
+
+const Card = ({ imageSrc, title, description,formPaths }: CardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(formPaths);
+  };
   return (
-    <CardSection>
+    <CardSection onClick={handleClick}>
       <CardImage src={imageSrc} alt={title} />
       <CardContentOverlay>
         <CardTitle>{title}</CardTitle>

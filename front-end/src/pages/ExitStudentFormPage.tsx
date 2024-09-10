@@ -1,6 +1,5 @@
 import DynamicForm from "../components/FormComponent/shared/DynamicForm";
-import { ExitStudentFormData } from "../components/FormComponent/ExitStudentForm/ExitStudentFormSchema";
-import { ExitStudentFormSchema } from "../components/FormComponent/ExitStudentForm/ExitStudentFormSchema";
+import { ExitStudentFormData,ExitStudentFormSchema } from "../components/FormComponent/ExitStudentForm/ExitStudentFormSchema";
 import { ExitStudentFormFields } from "../components/FormComponent/ExitStudentForm/ExitStudentFormFields";
 import { FetchStudentsAndPrograms } from "../services/FetchStudentsAndPrograms";
 
