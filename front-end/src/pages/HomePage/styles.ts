@@ -30,8 +30,9 @@ const fadeIn = keyframes`
 export const HomePageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 20px; /* To ensure the footer does not cover the content */
+  // overflow: hidden;
 `;
 
 export const Header = styled.h1`
@@ -71,9 +72,10 @@ export const Footer = styled.footer`
   align-items: center;
   justify-content: center;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  // position: fixed;
   bottom: 0;
   z-index: 1000;
+  margin-top: auto;
 
   @media (max-width: 768px) {
     height: 35px;
@@ -92,7 +94,7 @@ export const ContentContainer = styled.div`
   flex: 1;
   padding: 0 20px;
   // margin-top: 60px; /* Adjust according to the Header height */
-  margin-bottom: 40px; /* Adjust according to the Footer height */
+  // margin-bottom: 40px; /* Adjust according to the Footer height */
   height: calc(100vh - 100px); /* Full height minus header and footer */
   overflow: hidden;
 
@@ -236,6 +238,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: row; /* Ensure single row */
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   padding: 10px;
   gap: 20px;

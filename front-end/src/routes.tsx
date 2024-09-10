@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import RegistrationFormPage from "./pages/RegistrationFormPage";
-import SignUpFormPage from "./pages/SignUpPage";
+import RegistrationFormPage from "./pages/FormPages/RegistrationFormPage";
+import SignUpFormPage from "./pages/FormPages/SignUpPage";
 import HomePage from "./pages/HomePage";
 import ParticipationFormPage from "./pages/ParticipationFornPage";
 import LiabilityFormPage from "./pages/LiabilityFormPage";

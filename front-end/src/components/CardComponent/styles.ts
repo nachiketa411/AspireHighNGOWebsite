@@ -20,7 +20,7 @@ export const CardSection = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   padding: 0;
   height: 200px;
   will-change: transform, box-shadow;
@@ -28,7 +28,7 @@ export const CardSection = styled.div`
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transition-delay: 0.1s;
+    transition-delay: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   }
 
   &:focus-within {
@@ -68,7 +68,7 @@ export const CardContentOverlay = styled.div`
     0,
     0,
     0,
-    0.5
+    0.7
   ); /* Semi-transparent overlay for better readability */
   color: #fff;
   display: flex;

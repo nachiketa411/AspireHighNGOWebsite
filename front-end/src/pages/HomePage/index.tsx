@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useMemo } from "react"; // Adjust the path as needed
+import React, {
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+  Suspense,
+} from "react"; // Adjust the path as needed
 import {
   HomePageContainer,
   Header,
@@ -27,12 +33,15 @@ import { fetchItems } from "../../services/itemService";
 import { fetchStudents } from "../../services/studentService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Card from "../../components/CardComponent";
+// import Card from "../../components/CardComponent";
 import {
   fetchSchoolProgramServices,
   ProgramService,
 } from "../../services/programService";
 import Section from "../../components/SectionComponent";
+import { handleAction } from "../../utility";
+
+const Card = React.lazy(() => import("../../components/CardComponent"));
 
 const HomePage: React.FC = () => {
   const [items, setItems] = useState<ItemWithDetails[]>([]); // State to hold fetched items
@@ -46,6 +55,7 @@ const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null); // State for error handling
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [serviceList, setServiceList] = useState<ProgramService[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>(""); // Search state for filtering cards
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -92,16 +102,30 @@ const HomePage: React.FC = () => {
     fetchDataForSchoolServices();
   }, []);
 
-  const handleSelectItem = (id: number) => {
-    const selected = items.find((item) => item.id === id) || null;
+  // const handleSelectItem = (id: number) => {
+  //   const selected = items.find((item) => item.id === id) || null;
 
-    if (selectedItem?.id === id) {
-      setSelectedItem(null);
-      return;
-    }
+  //   if (selectedItem?.id === id) {
+  //     setSelectedItem(null);
+  //     return;
+  //   }
 
-    setSelectedItem(selected);
-  };
+  //   setSelectedItem(selected);
+  // };
+
+  const handleSelectItem = useCallback(
+    (id: number) => {
+      const selected = items.find((item) => item.id === id) || null;
+
+      if (selectedItem?.id === id) {
+        setSelectedItem(null);
+        return;
+      }
+
+      setSelectedItem(selected);
+    },
+    [items, selectedItem]
+  );
 
   const dynamicComponentRegistry = generateComponentRegistry(items, {
     [ComponentKeys.DynamicTable]: studentData,
@@ -115,13 +139,37 @@ const HomePage: React.FC = () => {
     console.log("Sign Up clicked");
   };
 
-  const toggleSidebar = () => {
+  // const toggleSidebar = () => {
+  //   setIsSidebarOpen((prev) => !prev);
+  // };
+
+  const toggleSidebar = useCallback(() => {
     setIsSidebarOpen((prev) => !prev);
-  };
+  }, []);
+
+  const handleOverlayClick = useCallback(() => {
+    if (isSidebarOpen) {
+      setIsSidebarOpen(false);
+    }
+  }, [isSidebarOpen]);
 
   const memoizedItems = useMemo(() => {
     return items.map((item) => ({ id: item.id, name: item.name }));
   }, [items]);
+
+  // Filter services based on the search query
+  const filteredServices = useMemo(() => {
+    return serviceList.filter((service) =>
+      service.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery, serviceList]);
+
+  const handleRoute = (route: string | null) => {
+    return handleAction(
+      route ? () => navigate(route) : null, // Navigate if route exists
+      "Routing is unavailable or the URL is incorrect" // Fallback message
+    );
+  };
 
   if (loading) {
     return <p>Loading...</p>; // Display a loading message while fetching data
@@ -137,7 +185,8 @@ const HomePage: React.FC = () => {
       <SidebarToggleIcon onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} />
       </SidebarToggleIcon>
-      {isSidebarOpen && <Overlay onClick={toggleSidebar} />}
+      {/* {isSidebarOpen && <Overlay onClick={toggleSidebar} />} */}
+      {isSidebarOpen && <Overlay onClick={handleOverlayClick} />}
       <Sidebar isOpen={isSidebarOpen}>
         <p>Sidebar Content</p>
         {/* Add your sidebar links or content here */}
@@ -208,7 +257,7 @@ const HomePage: React.FC = () => {
         </MainContentWrapper>
       </ContentContainer> */}
 
-      <ContentContainer>
+      {/* <ContentContainer>
         <CardContainer>
           {serviceList.map((service) => (
             <Card
@@ -218,6 +267,29 @@ const HomePage: React.FC = () => {
               formPaths={service.routingPath} 
             />
           ))}
+        </CardContainer>
+      </ContentContainer> */}
+
+      <ContentContainer>
+        <input
+          type="text"
+          placeholder="Search services..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{ padding: "10px", marginTop: "20px" }}
+        />
+        <CardContainer>
+          <Suspense fallback={<p>Loading Cards...</p>}>
+            {filteredServices.map((service) => (
+              <Card
+                key={service.name}
+                imageSrc={"https://via.placeholder.com/300x200"}
+                title={service.name}
+                description={service.description}
+                onClick={handleRoute(service.routingPath)}
+              />
+            ))}
+          </Suspense>
         </CardContainer>
       </ContentContainer>
 
