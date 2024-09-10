@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   CardSection,
   CardImage,
@@ -7,9 +8,14 @@ import {
   CardProps,
 } from "./styles";
 
-const Card = ({ imageSrc, title, description }: CardProps) => {
+const Card: React.FC<CardProps> = ({
+  imageSrc,
+  title,
+  description,
+  onClick,
+}: CardProps) => {
   return (
-    <CardSection>
+    <CardSection onClick={onClick}>
       <CardImage src={imageSrc} alt={title} />
       <CardContentOverlay>
         <CardTitle>{title}</CardTitle>

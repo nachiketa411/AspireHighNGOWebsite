@@ -8,7 +8,7 @@ export interface ProgramService {
   school: School;
   name: string;
   description: string;
-  routingPath?: string;
+  routingPath: string;
 }
 
 const staticProgramList: ProgramService[] = [
@@ -20,6 +20,7 @@ const staticProgramList: ProgramService[] = [
       name: "SGS",
     },
     description: "SGS After School Program",
+    routingPath: "/register",
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const staticProgramList: ProgramService[] = [
       name: "SGS",
     },
     description: "SGS Attendance",
+    routingPath: "/attendence",
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ const staticProgramList: ProgramService[] = [
       name: "SGS",
     },
     description: "SGS Exit Report",
+    routingPath: "/exit-report",
   },
   {
     id: 4,
@@ -47,6 +50,7 @@ const staticProgramList: ProgramService[] = [
       name: "SGS",
     },
     description: "SGS Quaterly Report",
+    routingPath: "/quaterly-report",
   },
   {
     id: 5,
@@ -56,6 +60,7 @@ const staticProgramList: ProgramService[] = [
       name: "SGS",
     },
     description: "SGS Student Survey",
+    routingPath: "/exitstudent",
   },
   {
     id: 6,
@@ -65,6 +70,7 @@ const staticProgramList: ProgramService[] = [
       name: "SGS",
     },
     description: "SGS Parent Survey",
+    routingPath: "/parent-survey",
   },
   {
     id: 7,
@@ -74,6 +80,7 @@ const staticProgramList: ProgramService[] = [
       name: "SGS",
     },
     description: "SGS Senior Exit Survey",
+    routingPath: "/senior-exit-survey",
   },
 ];
 

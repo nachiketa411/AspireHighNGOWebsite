@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import RegistrationFormPage from "./pages/RegistrationFormPage";
-import SignUpFormPage from "./pages/SignUpPage";
+import RegistrationFormPage from "./pages/FormPages/RegistrationFormPage";
+import SignUpFormPage from "./pages/FormPages/SignUpPage";
 import HomePage from "./pages/HomePage";
-import ParticipationFormPage from "./pages/ParticipationFornPage";
-import LiabilityFormPage from "./pages/LiabilityFormPage";
-import AttendanceFormPage from "./pages/AttendenceFormPage";
-import ExitStudentFormPage from "./pages/ExitStudentFormPage";
-import NonAttendanceFormPage from "./pages/NonAttendenceFromPage";
+import ParticipationFormPage from "./pages/FormPages/ParticipationFornPage";
+import LiabilityFormPage from "./pages/FormPages/LiabilityFormPage";
+import AttendanceFormPage from "./pages/FormPages/AttendenceFormPage";
+import ExitStudentFormPage from "./pages/FormPages/ExitStudentFormPage";
+import NonAttendanceFormPage from "./pages/FormPages/NonAttendenceFromPage";
 
 const AppRoutes: React.FC = () => {
   return (

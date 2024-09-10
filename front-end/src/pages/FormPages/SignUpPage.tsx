@@ -1,9 +1,9 @@
-import { signUpFormFields } from "../components/FormComponent/SignUpForm/SignUpFormFields";
+import { signUpFormFields } from "../../components/FormComponent/SignUpForm/SignUpFormFields";
 import {
   signUpFormData,
   signUpFormSchema,
-} from "../components/FormComponent/SignUpForm/SignUpFormSchema";
-import DynamicForm from "../components/FormComponent/shared/DynamicForm";
+} from "../../components/FormComponent/SignUpForm/SignUpFormSchema";
+import DynamicForm from "../../components/FormComponent/shared/DynamicForm";
 
 const SignUpFormPage = () => {
   const handleSignUpSubmit = (data: signUpFormData) => {
