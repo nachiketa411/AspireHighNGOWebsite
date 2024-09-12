@@ -8,7 +8,6 @@ import React, {
 import {
   HomePageContainer,
   Header,
-  MainContentWrapper,
   Sidebar,
   ContentContainer,
   ItemWithDetails,
@@ -18,13 +17,7 @@ import {
   CardContainer,
   Overlay,
 } from "./styles"; // Import your styled components
-import ListGroup from "../../components/ListGroupComponent";
-import MainContent from "../../components/MainContentComponent";
 import { useNavigate } from "react-router-dom";
-import {
-  Navbar,
-  NavbarButtonComponent,
-} from "../../components/NavBarComponent";
 import {
   ComponentKeys,
   generateComponentRegistry,
@@ -33,7 +26,6 @@ import { fetchItems } from "../../services/itemService";
 import { fetchStudents } from "../../services/studentService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-// import Card from "../../components/CardComponent";
 import {
   fetchSchoolProgramServices,
   ProgramService,
@@ -102,17 +94,6 @@ const HomePage: React.FC = () => {
     fetchDataForSchoolServices();
   }, []);
 
-  // const handleSelectItem = (id: number) => {
-  //   const selected = items.find((item) => item.id === id) || null;
-
-  //   if (selectedItem?.id === id) {
-  //     setSelectedItem(null);
-  //     return;
-  //   }
-
-  //   setSelectedItem(selected);
-  // };
-
   const handleSelectItem = useCallback(
     (id: number) => {
       const selected = items.find((item) => item.id === id) || null;
@@ -138,10 +119,6 @@ const HomePage: React.FC = () => {
   const handleSignUpClick = () => {
     console.log("Sign Up clicked");
   };
-
-  // const toggleSidebar = () => {
-  //   setIsSidebarOpen((prev) => !prev);
-  // };
 
   const toggleSidebar = useCallback(() => {
     setIsSidebarOpen((prev) => !prev);
@@ -185,22 +162,12 @@ const HomePage: React.FC = () => {
       <SidebarToggleIcon onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} />
       </SidebarToggleIcon>
-      {/* {isSidebarOpen && <Overlay onClick={toggleSidebar} />} */}
       {isSidebarOpen && <Overlay onClick={handleOverlayClick} />}
       <Sidebar isOpen={isSidebarOpen}>
         <p>Sidebar Content</p>
         {/* Add your sidebar links or content here */}
       </Sidebar>
 
-      {/* <Navbar>
-        <NavbarButtonComponent label="Login" onClick={handleLoginClick} />
-        <NavbarButtonComponent
-          label="Sign Up"
-          onClick={handleSignUpClick}
-          color="#28a745"
-          hoverColor="#218838"
-        />
-      </Navbar> */}
       <Section
         mediaType="video"
         mediaSrc="path/to/video.mp4"
@@ -212,63 +179,6 @@ const HomePage: React.FC = () => {
           { label: "Login", link: "/login", color: "red" },
         ]}
       />
-      {/* <ContentContainer>
-        <Sidebar isOpen={isSidebarOpen}>
-          <ListGroup
-            items={memoizedItems}
-            heading="Select a Service"
-            onSelectItem={handleSelectItem}
-            selectedItemId={selectedItem?.id || null}
-          />
-        </Sidebar>
-        <MainContentWrapper isOpen={isSidebarOpen}>
-          {selectedItem ? (
-            <>
-              <MainContent
-                title={selectedItem.name}
-                introduction={selectedItem.introduction}
-                subheadings={selectedItem.subheadings}
-                renderActionButton={() => (
-                  <button
-                    onClick={() => {
-                      navigate(selectedItem.routingPath);
-                    }}
-                  >
-                    {selectedItem.buttonLabel}
-                  </button>
-                )}
-              >
-                {dynamicComponentRegistry[selectedItem.id]}
-              </MainContent>
-            </>
-          ) : (
-            <CardContainer>
-              {serviceList.map((service) => (
-                <CardSection>
-                  <Card
-                    imageSrc="https://via.placeholder.com/300x200"
-                    title={service.name}
-                    description={service.description}
-                  />
-                </CardSection>
-              ))}
-            </CardContainer>
-          )}
-        </MainContentWrapper>
-      </ContentContainer> */}
-
-      {/* <ContentContainer>
-        <CardContainer>
-          {serviceList.map((service) => (
-            <Card
-              imageSrc="https://via.placeholder.com/300x200"
-              title={service.name}
-              description={service.description}
-              formPaths={service.routingPath} 
-            />
-          ))}
-        </CardContainer>
-      </ContentContainer> */}
 
       <ContentContainer>
         <input
@@ -286,7 +196,7 @@ const HomePage: React.FC = () => {
                 imageSrc={"https://via.placeholder.com/300x200"}
                 title={service.name}
                 description={service.description}
-                formPaths={service.routingPath}
+                onClick={handleRoute(service.routingPath)}
               />
             ))}
           </Suspense>

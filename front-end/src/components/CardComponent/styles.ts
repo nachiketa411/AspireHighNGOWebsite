@@ -7,7 +7,7 @@ export interface CardProps {
   imageSrc: string;
   title: string;
   description: string;
-  formPaths: string;
+  onClick?: () => void;
 }
 
 export const CardSection = styled.div`
