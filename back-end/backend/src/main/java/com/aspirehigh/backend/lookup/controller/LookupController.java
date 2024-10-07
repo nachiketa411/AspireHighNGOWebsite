@@ -1,4 +1,4 @@
-package com.aspirehigh.backend.controller;
+package com.aspirehigh.backend.lookup.controller;
 
 public class LookupController {
 

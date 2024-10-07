@@ -14,17 +14,17 @@ public class Disability extends BaseLookupEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "disability_id")
-	private Long disablityId;
+	private Long disabilityId;
 
 	@Column(name = "disability_name", nullable = false)
 	private String disabilityName;
 
-	public Long getDisablityId() {
-		return disablityId;
+	public Long getDisabilityId() {
+		return disabilityId;
 	}
 
-	public void setDisablityId(Long disablityId) {
-		this.disablityId = disablityId;
+	public void setDisabilityId(Long disablityId) {
+		this.disabilityId = disablityId;
 	}
 
 	public String getDisabilityName() {
