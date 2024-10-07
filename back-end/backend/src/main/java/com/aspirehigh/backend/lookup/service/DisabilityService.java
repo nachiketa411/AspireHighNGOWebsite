@@ -16,6 +16,7 @@ public interface DisabilityService {
 	// Method to fetch a disability by ID
 	Optional<DisabilityDTO> getDisabilityById(Long id);
 
+	// Method to create a disability by ID
 	DisabilityDTO createDisability(DisabilityDTO disabilityDTO);
 
 	// Method to update an existing disability
