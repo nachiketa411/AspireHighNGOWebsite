@@ -15,7 +15,7 @@ public interface DisabilityRepository extends JpaRepository<Disability, Long> {
 	List<Disability> findAllByIsActiveTrue();
 
 	// Find a disability by ID if it is active
-	Optional<Disability> findByIdAndIsActiveTrue(Long id);
+	Optional<Disability> findByDisabilityIdAndIsActiveTrue(Long disabilityId);
 
 	// Check if a disability with a specific name exists
 	boolean existsByDisabilityName(String disabilityName);

@@ -30,7 +30,7 @@ public class DisabilityServiceImpl implements DisabilityService {
 
 	@Override
 	public Optional<DisabilityDTO> getDisabilityById(Long id) {
-		Optional<Disability> disability = disabilityRepository.findByIdAndIsActiveTrue(id);
+		Optional<Disability> disability = disabilityRepository.findByDisabilityIdAndIsActiveTrue(id);
 
 		if (disability.isPresent()) {
 			return Optional.of(DisabilitiesMapper.mapDisabilityToDTO(disability.get()));
@@ -57,7 +57,7 @@ public class DisabilityServiceImpl implements DisabilityService {
 	@Override
 	public Optional<DisabilityDTO> updateDisability(Long id, DisabilityDTO disabilityDTO) {
 
-		Optional<Disability> optionalDisability = disabilityRepository.findByIdAndIsActiveTrue(id);
+		Optional<Disability> optionalDisability = disabilityRepository.findByDisabilityIdAndIsActiveTrue(id);
 
 		// If disability is found, update it; otherwise, throw an exception
 		if (optionalDisability.isPresent()) {
@@ -73,7 +73,7 @@ public class DisabilityServiceImpl implements DisabilityService {
 	@Override
 	public boolean deleteDisability(Long id) {
 
-		Optional<Disability> disability = disabilityRepository.findByIdAndIsActiveTrue(id);
+		Optional<Disability> disability = disabilityRepository.findByDisabilityIdAndIsActiveTrue(id);
 
 		// If disability exists, mark it as inactive instead of deleting it
 		if (disability.isPresent()) {
